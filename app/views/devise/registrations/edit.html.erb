@@ -1,15 +1,15 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h2>Editar sua conta</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'ui form' }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :email %>
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
   <div class="field">
-    <%= f.label :name, 'Nome' %><br />
+    <%= f.label :name, 'Nome' %>
     <%= f.text_field :name %>
   </div>
 
@@ -27,7 +27,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation, 'Confirmação de Senha' %><br />
+    <%= f.label :password_confirmation, 'Confirmação de Senha' %>
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
@@ -37,12 +37,6 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Salvar" %>
+    <%= f.submit "Salvar", class: 'ui button' %>
   </div>
 <% end %>
-
-<h3>Cancelar minha conta</h3>
-
-<p>Insatisfeito? <%= button_to "Cancelar minha conta", registration_path(resource_name), data: { confirm: "Tem certeza?" }, method: :delete %></p>
-
-<%= link_to "Voltar", :back %>
