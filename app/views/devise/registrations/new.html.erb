@@ -16,8 +16,8 @@
   <div class="field">
     <%= f.label :password, 'Senha' %>
     <% if @minimum_password_length %>
-    <em>(O tamanho mínimo de senha é: <%= @minimum_password_length %>)</em>
-    <% end %><br />
+    <em>(O tamanho mínimo de senha é: <%= @minimum_password_length %> caracteres)</em>
+    <% end %>
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
 
@@ -27,7 +27,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Cadastrar" , class: 'ui button' %>
+    <%= f.submit "Cadastrar" , class: 'ui button teal' %>
   </div>
 <% end %>
 
