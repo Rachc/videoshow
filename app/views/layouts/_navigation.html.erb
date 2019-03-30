@@ -1,0 +1,34 @@
+<div class="ui large menu teal">
+  <nav class="ui container">
+    <%= link_to 'Home', root_path, class: 'item' %>
+    <% if user_signed_in? %>
+      <a class="item">
+        Seus Videos
+      </a>
+    <% end %>
+    <div class="right menu">
+      <% if user_signed_in? %>
+        <div class="item">
+          <i class="user circle icon"></i><%= current_user.name %>
+        </div>
+        <div class="ui dropdown item">
+          <i class="cog icon"></i>Menu <i class="dropdown icon"></i>
+          <div class="menu">
+            <a class="item">Adicionar video</a>
+            <%= link_to 'Editar sua conta', edit_user_registration_path(current_user), class: 'item' %>
+          </div>
+        </div>
+        <%= link_to destroy_user_session_path, method: :delete, class: 'item' do %>
+          <i class="sign-out icon"></i> Sair
+        <% end %>
+      <% else %>
+        <%= link_to new_user_registration_path, class: 'item' do %>
+          <i class="clipboard outline icon"></i>Cadastro
+        <% end %>
+        <%= link_to new_user_session_path, class: 'item' do %>
+          <i class="sign-in icon"></i>Entrar
+        <% end %>
+      <% end %>
+    </div>
+  </nav>
+</div>
