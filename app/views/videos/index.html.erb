@@ -1,0 +1,12 @@
+<h1>Todos os Videos</h1>
+
+<% if @videos.empty? %>
+<p>Não há nenhum video postado ainda ):</p>
+<% else %>
+  <% @videos.each do |video| %>
+    <h2>nome: <%= video.name %></h2>
+    <p>url: <%= video.url %></p>
+    <p>autor: <%= video.user.name %></p>
+    <p>visualizações: <%= video.view %></p>
+  <% end %>
+<% end %>

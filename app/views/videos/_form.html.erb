@@ -1,0 +1,21 @@
+<div class="ui two column grid">
+  <div class="column">
+    <%= form_for @video, html: { class: 'ui form' } do |f| %>
+      <div class="field">
+        <%= f.label :name, 'Nome' %>
+        <em>(O nome precisa ter mais de 6 caracteres')</em>
+        <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :url, 'Url' %>
+        <em>(Só aceitamos vídeos no formao 'm3u8')</em>
+        <%= f.text_field :url, autofocus: true, autocomplete: "url" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit(@video.new_record? ? 'Salvar' : 'Editar', class: 'ui button teal') %>
+      </div>
+    <% end %>
+  </div>
+</div>

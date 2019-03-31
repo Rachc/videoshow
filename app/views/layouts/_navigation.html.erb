@@ -1,9 +1,11 @@
 <div class="ui large menu teal">
   <nav class="ui container">
-    <%= link_to 'Home', root_path, class: 'item' %>
-    <% if user_signed_in? %>
+    <% unless user_signed_in? %>
+      <%= link_to 'Home', root_path, class: 'item' %>
+    <% else %>
+      <%= link_to 'Home', videos_path, class: 'item' %>
       <a class="item">
-        Seus Videos
+        Seus Videos 
       </a>
     <% end %>
     <div class="right menu">
@@ -14,7 +16,7 @@
         <div class="ui dropdown item">
           <i class="cog icon"></i>Menu <i class="dropdown icon"></i>
           <div class="menu">
-            <a class="item">Adicionar video</a>
+            <%= link_to 'Adicionar video', new_video_path, class: 'item' %>
             <%= link_to 'Editar sua conta', edit_user_registration_path(current_user), class: 'item' %>
           </div>
         </div>

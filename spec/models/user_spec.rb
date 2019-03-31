@@ -10,7 +10,7 @@ RSpec.describe User, type: :model do
         name: 'Mina'
       )
 
-      expect(user).to_not be_valid
+      expect(user1).to_not be_valid
       expect(user2).to be_valid
     end
 
