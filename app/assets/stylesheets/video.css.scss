@@ -1,0 +1,12 @@
+.app-video{
+  margin-top: 20px;
+
+  .ui.cards > .card, .ui.card {
+    width: 500px;
+  }
+
+  .ui.cards > .card, .ui.card > .image {
+    display: flex;
+    justify-content: center;
+  }
+}
