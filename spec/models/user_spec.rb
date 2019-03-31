@@ -3,9 +3,15 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   describe 'User' do
     it 'Should have name' do
-      user = User.new(email: 'sailor@moon.com', password: 'SuChH4Ck3R')
+      user1 = User.new(email: 'sailor@moon.com', password: 'SuChH4Ck3R')
+      user2 = User.new(
+        email: 'sailor@venus.com',
+        password: 'SuChH4Ck3R',
+        name: 'Mina'
+      )
 
       expect(user).to_not be_valid
+      expect(user2).to be_valid
     end
 
     it 'Should have a name with more than 1 character' do
@@ -18,7 +24,7 @@ RSpec.describe User, type: :model do
       user2 = User.new(
         email: 'sailor@venus.com',
         password: 'SuChH4Ck3R',
-        name: 'jo'
+        name: 'mi'
       )
 
       expect(user1).to_not be_valid
