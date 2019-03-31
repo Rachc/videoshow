@@ -123,5 +123,18 @@ RSpec.describe Video, type: :model do
         expect(video.view).to eq(1)
       end
     end
+
+    describe '.created_date' do
+      it 'should convert created time to "%d.%m.%y - %H:%M" format' do
+        video = Video.new(
+          url: 'https://teste.com/mingau.m3u8',
+          name: 'Meu video de gatinho',
+          created_at: '2019-03-31 20:41:31 UTC',
+          user: user
+        )
+
+        expect(video.created_date).to eq('31.03.19 - 20:41')
+      end
+    end
   end
 end
