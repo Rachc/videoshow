@@ -107,5 +107,21 @@ RSpec.describe Video, type: :model do
 
       expect(video.view).to eq(0)
     end
+
+    describe '.add_view' do
+      it 'Should have 1 more view when called' do
+        video = Video.new(
+          url: 'https://teste.com/mingau.m3u8',
+          name: 'Meu video de gatinho',
+          user: user
+        )
+
+        expect(video.view).to eq(0)
+
+        video.add_view
+
+        expect(video.view).to eq(1)
+      end
+    end
   end
 end

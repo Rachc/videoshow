@@ -8,4 +8,8 @@ class Video < ApplicationRecord
 
   validates :url, presence: true,
             format: { with: VALID_URL_REGEX }
+
+  def add_view
+    self.view += 1
+  end
 end
