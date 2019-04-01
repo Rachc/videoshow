@@ -1,12 +1,37 @@
-<h1>Todos os Videos</h1>
+<h2 class="ui center aligned icon header">
+  <i class="circular film icon teal"></i>
+  Todos os Videos
+</h2>
+
+<div class="ui divider"></div>
 
 <% if @videos.empty? %>
-<p>Não há nenhum video postado ainda ):</p>
+  <p>Não há nenhum video postado ainda ):</p>
 <% else %>
-  <% @videos.each do |video| %>
-    <h2>nome: <%= video.name %></h2>
-    <p>url: <%= video.url %></p>
-    <p>autor: <%= video.user.name %></p>
-    <p>visualizações: <%= video.view %></p>
-  <% end %>
+  <div class="ui three column grid">
+    <% @videos.each do |video| %>
+      <div class="column">
+        <div class="ui card">
+          <div class="content">
+            <% if current_user == video.user %>
+              <%= link_to edit_video_path(video) do %>
+              <i class="right floated edit icon teal"></i>
+              <% end %>
+            <% end %>
+            <div class="header"><%= link_to video.name, video_path(video), class: 'item' %></div>
+          </div>
+          <div class="extra content">
+            <span class="left floated like">
+              <i class="user icon teal"></i>
+              <%= video.user.name %>
+            </span>
+            <span class="right floated star">
+              <i class="eye icon teal"></i>
+              <%= video.view %>
+            </span>
+          </div>
+        </div>
+      </div >
+    <% end %>
+  </div>
 <% end %>

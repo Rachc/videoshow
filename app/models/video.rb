@@ -12,4 +12,8 @@ class Video < ApplicationRecord
   def add_view
     self.view += 1
   end
+
+  def created_date
+    self.created_at.strftime('%d.%m.%y - %H:%M')
+  end
 end
