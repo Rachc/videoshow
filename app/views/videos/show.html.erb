@@ -1,31 +1,43 @@
-<div class="ui four centered column grid">
-  <div class="colum">
-    <div class="app-video">
-      <div class="ui card">
-        <div class="image">
-          <video id="my_video_2" class="video-js vjs-default-skin" controls autoplay preload="auto" width="640" height="268" 
-      data-setup='{}'>
-            <%= tag("source", { src: @video.url, type: "application/x-mpegURL"}, nil, true) %>
-          </video>
-          <script>
-          </script>
-        </div>
-        <div class="content left floated">
-          <a class="header"><%= @video.name %></a>
-          <div class="meta">
-            <span class="date">Criado em <%= @video.created_date %></span>
-          </div>
-          <div class="description">
-            visualizações: <%= @video.view %>
-          </div>
-        </div>
-        <div class="extra content">
-          <a>
-            <i class="user icon"></i>
-            Criado por <%= @video.user.name %>
-          </a>
-        </div>
+
+<h3 class="ui center aligned icon header">
+  <i class="circular film icon teal"></i>
+  <%= @video.name %>
+</h3>
+
+<div class="ui divider"></div>
+
+<div class="app-video">
+  <div class="ui card">
+    <div class="image">
+      <video id="my_video_2" class="video-js vjs-default-skin" controls autoplay preload="auto" width="640" height="268" 
+  data-setup='{}'>
+        <%= tag("source", { src: @video.url, type: "application/x-mpegURL"}, nil, true) %>
+      </video>
+      <script>
+      </script>
+    </div>
+    <div class="content left floated">
+      <a class="header"><%= @video.name %></a>
+      <div class="meta">
+        <span class="date">Criado em <%= @video.created_date %></span>
       </div>
+      <div class="description">
+        visualizações: <%= @video.view %>
+      </div>
+    </div>
+    <div class="extra content">
+      <a>
+        <i class="user icon teal"></i>
+        Criado por <%= @video.user.name %>
+      </a>
+      <span class="right floated">
+        <% if current_user == @video.user %>
+        <%= link_to edit_video_path(@video) do %>
+          <i class="right floated edit icon teal"></i>
+          Editar
+        <% end %>
+      <% end %>
+      </a>
     </div>
   </div>
 </div>

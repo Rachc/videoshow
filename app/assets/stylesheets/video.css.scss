@@ -1,5 +1,9 @@
 .app-video{
   margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  width: 100%;
 
   .ui.cards > .card, .ui.card {
     width: 500px;
