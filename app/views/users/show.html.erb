@@ -1,0 +1,15 @@
+<h2 class="ui center aligned icon header">
+  <i class="user circle icon teal"></i>
+  Videos de <%= @user.name %>
+</h2>
+
+<div class="ui divider"></div>
+
+<% if @videos.any? %>
+  <%= render 'videos/video' %>
+<% else %>
+  <%= @user.name %> não possui nenhum video postado ):
+  <% if @user == current_user %>
+    <%= link_to 'Você não gostaria de postar um novo video?', new_video_path %>
+  <% end %>
+<% end %>
