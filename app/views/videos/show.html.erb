@@ -28,7 +28,7 @@
     <div class="extra content">
       <a>
         <i class="user icon teal"></i>
-        Criado por <%= @video.user.name %>
+        Criado por <%= link_to video.user.name, user_path(video.user) %>
       </a>
       <span class="right floated">
         <% if current_user == @video.user %>
