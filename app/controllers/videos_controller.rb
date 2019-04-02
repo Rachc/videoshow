@@ -1,6 +1,7 @@
 class VideosController < ApplicationController
   before_action :authenticate_user!
   before_action :find_video, only: [:show, :edit, :update, :destroy, :add_view]
+  before_action :require_same_user, only: [:edit, :update, :destroy]
 
   def index
     @videos = Video.all
@@ -18,7 +19,7 @@ class VideosController < ApplicationController
       flash[:success] = 'Seu video foi salvo com sucesso'
       redirect_to video_path(@video)
     else
-      flash[:danger] = 'Algo deu errado ao criar o seu video' #Trocar essa mensagem
+      flash[:error] = 'Algo deu errado ao criar o seu video'
       render 'new'
     end
   end
@@ -54,5 +55,12 @@ class VideosController < ApplicationController
 
   def video_params
     params.require(:video).permit(:name, :url)
+  end
+
+  def require_same_user
+    if current_user != @video.user
+      flash[:error] = 'Você não tem permissão para executar essa ação'
+      redirect_to root_path
+    end
   end
 end
