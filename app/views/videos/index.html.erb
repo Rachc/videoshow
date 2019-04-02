@@ -8,30 +8,5 @@
 <% if @videos.empty? %>
   <p>Não há nenhum video postado ainda ):</p>
 <% else %>
-  <div class="ui three column grid">
-    <% @videos.each do |video| %>
-      <div class="column">
-        <div class="ui card">
-          <div class="content">
-            <% if current_user == video.user %>
-              <%= link_to edit_video_path(video) do %>
-              <i class="right floated edit icon teal"></i>
-              <% end %>
-            <% end %>
-            <div class="header"><%= link_to video.name, video_path(video), class: 'item' %></div>
-          </div>
-          <div class="extra content">
-            <span class="left floated like">
-              <i class="user icon teal"></i>
-              <%= video.user.name %>
-            </span>
-            <span class="right floated star">
-              <i class="eye icon teal"></i>
-              <%= video.view %>
-            </span>
-          </div>
-        </div>
-      </div >
-    <% end %>
-  </div>
+  <%= render 'video' %>
 <% end %>
