@@ -18,7 +18,7 @@ class VideosController < ApplicationController
       flash[:success] = 'Seu video foi salvo com sucesso'
       redirect_to video_path(@video)
     else
-      flash[:danger] = 'Algo deu errado ao criar o seu video' #Trocar essa mensagem
+      flash[:error] = @video.errors.full_messages.to_sentence
       render 'new'
     end
   end
@@ -32,6 +32,7 @@ class VideosController < ApplicationController
       flash[:success] = 'Seu video foi alterado com sucesso'
       redirect_to video_path(@video)
     else
+      flash[:error] = @video.errors.full_messages.to_sentence
       render 'edit'
     end
   end
