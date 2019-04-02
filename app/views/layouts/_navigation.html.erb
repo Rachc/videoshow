@@ -3,16 +3,15 @@
     <% unless user_signed_in? %>
       <%= link_to 'Home', root_path, class: 'item' %>
     <% else %>
-      <%= link_to 'Home', videos_path, class: 'item' %>
-      <a class="item">
-        Seus Videos 
-      </a>
+      <%= link_to 'Todos os videos', videos_path, class: 'item' %>
+      <%= link_to 'Seus Videos', user_path(current_user), class: 'item' %>
+      <%= link_to 'Adicionar video', new_video_path, class: 'item' %>
     <% end %>
     <div class="right menu">
       <% if user_signed_in? %>
-        <div class="item">
+        <%= link_to user_path(current_user), class: 'item' do %>
           <i class="user circle icon"></i><%= current_user.name %>
-        </div>
+        <% end %>
         <div class="ui dropdown item">
           <i class="cog icon"></i>Menu <i class="dropdown icon"></i>
           <div class="menu">
