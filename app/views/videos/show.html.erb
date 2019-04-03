@@ -9,11 +9,20 @@
 <div class="app-video">
   <div class="ui card">
     <div class="image">
-      <video id="my_video_2" class="video-js vjs-default-skin" controls autoplay preload="auto" width="640" height="268" 
-  data-setup='{}'>
+      <video id= "<%= @video_id %>" class="video-js vjs-default-skin" controls play preload="auto" width="640" height="268" data-setup='{}' data-video="<%= @video.id %>">
         <%= tag("source", { src: @video.url, type: "application/x-mpegURL"}, nil, true) %>
       </video>
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
       <script>
+      document.getElementById('<%= @video_id %>').addEventListener('play',count_view,false);
+        function count_view(e) {
+          let video_data = "id=<%= @video.id %>"
+          Rails.ajax({
+            type: "POST", 
+            url: "/add_view",
+            data: video_data,
+          })
+        }
       </script>
     </div>
     <div class="content left floated">
