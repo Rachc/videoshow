@@ -3,5 +3,7 @@ Rails.application.routes.draw do
   resources :videos
   resources :users, only: [:show]
 
+  post 'add_view', to: 'videos#add_view'
+
   root to: 'welcome#home'
 end

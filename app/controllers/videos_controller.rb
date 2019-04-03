@@ -4,7 +4,7 @@ class VideosController < ApplicationController
   before_action :require_same_user, only: [:edit, :update, :destroy]
 
   def index
-    @videos = Video.all
+    @videos = Video.order(id: :desc)
   end
 
   def new
@@ -24,7 +24,9 @@ class VideosController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @video_id = "Video-#{@video.id}"
+  end
 
   def edit; end
 
@@ -45,6 +47,7 @@ class VideosController < ApplicationController
 
   def add_view
     @video.add_view
+    @video.save
   end
 
   private
