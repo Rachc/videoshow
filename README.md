@@ -1,9 +1,6 @@
 ## Sobre o projeto
 ```
 O projeto é um CRUD básico com um visualizador de videos.
-A url deve ter, obrigatoriamente, a extensão .m3u8
-
-O projeto é um CRUD básico com um visualizador de videos.
 
 A url deve ter, obrigatoriamente, a extensão .m3u8
 
